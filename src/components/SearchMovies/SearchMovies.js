@@ -49,9 +49,9 @@ function SearckMovies () {
           }
 
           setMovies([...data.results]);
-          setTotal(data.total_pages
-            );
+          setTotal(data.total_results);
           setIsNothing(true);
+          console.log(data)
         } catch (error) {
           setError(error.message);
         } finally {
@@ -63,12 +63,13 @@ function SearckMovies () {
     }
   }, [nameMovie, page]);
 
-
+const totalPage = Math.floor(total / 20);
+console.log(totalPage)
   return (
     <div className={css.Searchbar}>
       <Searchbar onSubmit={searchInput} />
       <MoviesList movies={movies} />
-      {total === 0 && isNothing && (
+      {(total === 0 && isNothing) && (
         <>
           <h2 className={css.message}>За вашим запитом нічого не знайдено</h2>
           <img src='https://i.gifer.com/GT4C.gif' alt='nothing' className={css.gif}/>
@@ -77,7 +78,7 @@ function SearckMovies () {
       {error && <h2 className={css.title}>{error}</h2>}
       {loading && <Loader text="Loading..." />}
 
-      {(movies.length > 0 && page < total) && (
+      {(movies.length > 0 && page < totalPage) && (
         <Button loader={loaderMore} type="button" />
       )}
     </div>
