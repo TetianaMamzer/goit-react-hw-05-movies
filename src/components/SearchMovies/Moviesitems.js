@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, memo} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import css from './SearchMovies.module.css';
 
@@ -16,4 +16,4 @@ const MoviesItems = ({ movies }) => {
   });
 };
 
-export default MoviesItems;
+export default memo(MoviesItems);

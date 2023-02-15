@@ -35,25 +35,27 @@ function SearckMovies() {
   };
 
   useEffect(() => {
+
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        const data = await searchMovies(search, page);
+
+        setMovies(movies => [...movies, ...data.results]);
+        setTotal(data.total_results);
+        setIsNothing(true);
+
+        console.log(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     if (search) {
-      const fetchPosts = async () => {
-        try {
-          setLoading(true);
-          const data = await searchMovies(search, page);
-
-          setMovies(movies => [...movies, ...data.results]);
-          setTotal(data.total_results);
-          setIsNothing(true);
-
-          console.log(data);
-        } catch (error) {
-          setError(error.message);
-        } finally {
-          setLoading(false);
-        }
-      };
-
       fetchPosts();
+      document.querySelector('form').reset();
     }
   }, [search, page]);
 
