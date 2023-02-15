@@ -1,6 +1,7 @@
 
 import React from 'react';
 import css from './SearchMovies.module.css';
+import { memo } from 'react';
 
 
 import MoviesItems from './Moviesitems';
@@ -16,4 +17,4 @@ const MoviesList = ({ movies }) => {
     );
 };
 
-export default MoviesList;
+export default memo(MoviesList);

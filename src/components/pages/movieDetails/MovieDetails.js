@@ -1,13 +1,14 @@
 import { movieDetails } from 'components/Api';
 import { useState, useEffect } from 'react';
-import { Outlet, Link, useParams, useNavigate } from 'react-router-dom';
+import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 
 const MovieDetails = () => {
   const [movie, setMovie] = useState();
   const { id } = useParams();
 
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const from = location.state?.from || '/';
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -46,7 +47,7 @@ const MovieDetails = () => {
   }
 
   return ( <>
-    <button onClick={() => navigate(-1)}>Go back</button>
+    <button onClick={() => navigate(from)}>Go back</button>
     <div>
       <div><img src={generatePosterImg(poster_path)} width='250' height='350' alt={title}/></div>
       <div>
@@ -60,8 +61,8 @@ const MovieDetails = () => {
     </div>
     <h3>Additional information</h3>
     <ul>
-      <Link to='cast'><li>Cast</li></Link >
-      <Link to='reviews'><li>Reviews</li></Link >
+      <Link to='cast' state={{from}}><li>Cast</li></Link >
+      <Link to='reviews' state={{from}}><li>Reviews</li></Link >
       <Outlet/>
     </ul>
     </>);
