@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './navbar/Navbar';
 import Home from './pages/home/Home';
 import Movies from './pages/movies/Movies';
-import NotFound from './NotFound/NotFound';
 import MovieDetails from './pages/movieDetails/MovieDetails';
 import Cast from './pages/cast/Cast';
 import Reviews from './pages/reviews/Reviews';
@@ -19,7 +18,7 @@ function App() {
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Home/>} />
       </Routes>
     </BrowserRouter>
   );
