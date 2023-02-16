@@ -20,7 +20,6 @@ function SearckMovies() {
   const search = searchParams.get('search');
   const page = searchParams.get('page');
 
-  console.log(page);
   const loaderMore = () => {
     setSearchParams({ search, page: Number(page) + 1 });
   };
@@ -45,7 +44,7 @@ function SearckMovies() {
         setTotal(data.total_results);
         setIsNothing(true);
 
-        console.log(data);
+
       } catch (error) {
         setError(error.message);
       } finally {
@@ -60,7 +59,7 @@ function SearckMovies() {
   }, [search, page]);
 
   const totalPage = Math.floor(total / 20);
-  console.log(totalPage);
+
   return (
     <div className={css.Searchbar}>
       <Searchbar onSubmit={searchInput} />

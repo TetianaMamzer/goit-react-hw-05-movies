@@ -6,7 +6,7 @@ const CastList = ({ cast }) => {
     const noPosterImg =
   'https://freedesignfile.com/upload/2018/11/Characters-in-film-design-elements-background-vector-graphic-715.jpg';
 
-  function generatePosterImg(poster_path) {
+  function generatePosterImg(profile_path) {
     if (profile_path === null) {
       return noPosterImg;
     }
@@ -15,7 +15,7 @@ const CastList = ({ cast }) => {
 
     return (
       <li key={id} className={css.list}>
-        <img src={generatePosterImg()} alt={name} width='150' height='200' className={css.img}/>
+        <img src={generatePosterImg(profile_path)} alt={name} width='150' height='200' className={css.img}/>
         <h3>{name}</h3>
         <p>{character}</p>
       </li>
