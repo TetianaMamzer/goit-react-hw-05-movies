@@ -2,6 +2,8 @@ import { movieDetails } from 'components/Api';
 import { useState, useEffect } from 'react';
 import { Outlet, Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 
+import css from './MovieDetails.module.css';
+
 const MovieDetails = () => {
   const [movie, setMovie] = useState();
   const { id } = useParams();
@@ -46,10 +48,10 @@ const MovieDetails = () => {
     return `https://image.tmdb.org/t/p/w500${poster_path}`;
   }
 
-  return ( <>
-    <button onClick={() => navigate(from)}>Go back</button>
-    <div>
-      <div><img src={generatePosterImg(poster_path)} width='250' height='350' alt={title}/></div>
+  return ( <div className={css.container}>
+    <button onClick={() => navigate(from)} className={css.button}> &#8880; Go back</button>
+    <div className={css.flex}>
+      <div><img src={generatePosterImg(poster_path)} width='250' height='350' alt={title} className={css.img}/></div>
       <div>
         <h2>{title} ({date})</h2>
         <p>Use Score: {vote_average.toFixed(1)}</p>
@@ -59,13 +61,13 @@ const MovieDetails = () => {
         <p>{genre}</p>
       </div>
     </div>
-    <h3>Additional information</h3>
-    <ul>
-      <Link to='cast' state={{from}}><li>Cast</li></Link >
-      <Link to='reviews' state={{from}}><li>Reviews</li></Link >
-      <Outlet/>
+    <h3 className={css.text}>Additional information</h3>
+    <ul className={css.group}>
+      <Link to='cast' state={{from}} className={css.link}><li className={css.list}>Cast</li></Link >
+      <Link to='reviews' state={{from}} className={css.link}><li className={css.list}>Reviews</li></Link >
     </ul>
-    </>);
+    <Outlet/>
+    </div>);
  }
 };
 

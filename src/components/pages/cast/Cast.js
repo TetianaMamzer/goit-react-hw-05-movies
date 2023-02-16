@@ -1,6 +1,7 @@
 import { movieCredits } from 'components/Api';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import css from './Cast.module.css';
 
 import CastList from './CastList';
 
@@ -25,7 +26,7 @@ const Cast = () => {
 
     return (
 
-        <ul>
+        <ul className={css.group}>
           <CastList cast={cast} />
         </ul>
 

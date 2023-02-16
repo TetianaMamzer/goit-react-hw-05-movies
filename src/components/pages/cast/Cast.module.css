@@ -1,0 +1,25 @@
+.group {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 100vh;
+  justify-content: center;
+  
+
+}
+.list {
+  width: 150px;
+  height: 300px;
+  padding: 10px;
+  background-color: rgba(144, 141, 180, 0.462);
+  border-radius: 10px;
+  list-style: none;
+  box-shadow: 5px 5.26027px 19.726px rgb(144, 141, 180);
+}
+.img {
+  width: 150px;
+  height: 200px;
+
+}
